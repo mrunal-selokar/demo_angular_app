@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-
+import { PostsService } from "../services/posts.service";
 @Component({
+  moduleId: module.id,
   selector: 'user',
-  templateUrl: 'user.component.html'
+  templateUrl: 'user.component.html',
+  providers:[PostsService]
 })
 export class UserComponent {
   title:string;
@@ -11,7 +13,8 @@ export class UserComponent {
   address:address;
   hobbies: string[];
   showHobbies: boolean;
-  constructor(){
+  posts: Post[];
+  constructor(private postsService: PostsService){
       console.log('Constructor ran!');
         this.title = 'Welcome to the demo application!';
         this.name = 'Mrunal Selokar';
@@ -25,6 +28,10 @@ export class UserComponent {
         }
         this.hobbies = ["drawing","doodling","music"];
         this.showHobbies = false;
+
+        this.postsService.getPosts().subscribe(posts => {
+           this.posts=posts;
+        });
     }
 
     toggleHobbies(){
@@ -35,6 +42,15 @@ export class UserComponent {
             this.showHobbies = true;
         }
     }
+
+    addHobby(hobby)
+    {
+        this.hobbies.push(hobby);
+    }
+
+    deleteHobby(i){
+        this.hobbies.splice(i,1);
+    }
 }
 interface address{
     plot:string;
@@ -42,4 +58,10 @@ interface address{
     street: string;
     city: string;
     zip:string;
+}
+
+interface Post{
+    id:number;
+    title:string;
+    body:string;
 }
