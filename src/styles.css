@@ -1,6 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 h1 {
-  color: #369;
+  color: #fff;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250%;
+}
+md-card {
+  margin: 20px;
+}
+a,a:hover,a:active,a:visited{
+  color:#fff !important;
+}
+#close{
+  border-radius: 50%;
+  float: right;
+}
+body{
+  background-color: lightslategray;
 }

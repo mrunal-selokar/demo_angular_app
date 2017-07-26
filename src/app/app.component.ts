@@ -3,13 +3,11 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-  <ul>
-    <li><a routerLink="/">Home</a></li>
-    <li><a routerLink="/about">About</a></li>
-  </ul>
+  <button routerLink="/" md-raised-button color="primary">Home</button>
+  <button routerLink="/about" md-raised-button color="accent">About</button>
   <router-outlet></router-outlet>
   `
 })
 export class AppComponent {
-  
+
   }

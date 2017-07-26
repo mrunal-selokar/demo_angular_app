@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { PostsService } from "../services/posts.service";
 @Component({
-  moduleId: module.id,
+
   selector: 'user',
   templateUrl: 'user.component.html',
   providers:[PostsService]
@@ -22,7 +22,7 @@ export class UserComponent {
         this.address = {
             plot: "26",
             area : 'Sarwashree nagar',
-            street: 'Umred roas',
+            street: 'Umred road',
             city: 'Nagpur',
             zip: '440024'
         }

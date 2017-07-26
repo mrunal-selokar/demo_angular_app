@@ -1,25 +1,38 @@
-HELLO! 
 <h1>
   {{name}} !
   <small>{{title}}</small>
 </h1>
+<md-card>
 <p> <strong>Email:</strong> {{email}} </p>
 <p><strong>Address: </strong> {{address.plot}}, {{address.area}}, {{address.street}}, {{address.city}}-{{address.zip}}</p>
-<button (click)="toggleHobbies()">{{showHobbies? "Hide":"Show"}} Hobbies</button>
+</md-card>
+<md-card>
+<button md-raised-button color="primary" (click)="toggleHobbies()">{{showHobbies? "Hide":"Show"}} Hobbies</button>
 <div *ngIf="showHobbies">
+  <form (submit)="addHobby(hobby.value)">
+        <label>Add Hobby:</label><br/>
+        <input mdInput type="text" #hobby /><br/>
+    </form>
 <strong>Hobbies:</strong>
     <ul>
         <li *ngFor="let hobby of hobbies; let i = index">
-            {{hobby}} <button (click)="deleteHobby(i)">X</button>
-        </li>
+              <md-card>
+          {{hobby}} <button md-mini-fab color="warn" id="close" (click)="deleteHobby(i)">X</button>
+             </md-card>
+          </li>
+
     </ul>
-    <form (submit)="addHobby(hobby.value)">
-        <label>Add Hobby:</label><br/>
-        <input type="text" #hobby /><br/>
-    </form>
+
 </div>
+</md-card>
 <hr/>
+<md-card>
 <h3> Edit User</h3>
+
+
+
+
+
 <form>
     <input type="text" name="name" [(ngModel)]="name"/><br/>
     <input type="text" name="email" [(ngModel)]="email"/><br/>
@@ -29,8 +42,11 @@ HELLO!
     <input type="text" name="city" [(ngModel)]="address.city"/><br/>
     <input type="text" name="zip" [(ngModel)]="address.zip"/><br/>
 </form>
+</md-card>
 <hr/>
 <div *ngFor="let post of posts">
+  <md-card>
     <h3>{{post.title}}</h3>
     <p>{{post.body}}</p>
+  </md-card>
 </div>
